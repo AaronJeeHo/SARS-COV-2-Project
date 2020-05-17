@@ -1,6 +1,3 @@
-from parse_fasta import parse_fasta
-
-
 def get_orfs(seq, minbp, nested):
     """
     Seq: Reference Genome
