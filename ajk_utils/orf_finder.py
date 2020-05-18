@@ -12,12 +12,21 @@ def get_orfs(seq, minbp, nested):
     for frame in range(3):
         start_pos, end_pos = ([] for l in range(2))
 
+        can_start = True
         for i in range(frame, len(seq), 3):
             codon = seq[i:i + 3]
-            if codon == 'ATG':
+            # not sure if he wants inner ORFS too?
+            # if codon == 'ATG':
+            #     start_pos.append(i)
+            # elif codon in stop_c:
+            #     end_pos.append(i)
+
+            if codon == 'ATG' and can_start:
                 start_pos.append(i)
+                can_start = False
             elif codon in stop_c:
                 end_pos.append(i)
+                can_start = True
 
         end_index = 0
         last_end = end_pos[len(end_pos) - 1]
