@@ -15,17 +15,13 @@ def get_orfs(seq, minbp, nested):
         can_start = True
         for i in range(frame, len(seq), 3):
             codon = seq[i:i + 3]
-            # not sure if he wants inner ORFS too?
-            # if codon == 'ATG':
-            #     start_pos.append(i)
-            # elif codon in stop_c:
-            #     end_pos.append(i)
 
             if codon == 'ATG' and can_start:
                 start_pos.append(i)
                 can_start = False
             elif codon in stop_c:
                 end_pos.append(i)
+
                 can_start = True
 
         end_index = 0
@@ -47,9 +43,10 @@ def get_orfs(seq, minbp, nested):
         for i in curr_orfs:
             if (i[1] - i[0]) >= minbp:
                 if nested:
-                    orf_list.append((i[0] + 1, i[1] + 3, frame + 1))
+                    orf_list.append((i[0] + 1, i[1], frame + 1))
+
                 elif i[1] != prev_end:
-                    orf_list.append((i[0] + 1, i[1] + 3, frame + 1))
+                    orf_list.append((i[0] + 1, i[1], frame + 1))
             prev_end = i[1]
 
     orf_list.sort(key=lambda gene: (gene[0], gene[1], gene[2]))
