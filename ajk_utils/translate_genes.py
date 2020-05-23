@@ -2,8 +2,8 @@ def nuc_to_pro(seq):
     translate = {
         'TTT': 'F', 'TCT': 'S', 'TAT': 'Y', 'TGT': 'C',
         'TTC': 'F', 'TCC': 'S', 'TAC': 'Y', 'TGC': 'C',
-        'TTA': 'L', 'TCA': 'S', 'TAA': '_', 'TGA': '_',
-        'TTG': 'L', 'TCG': 'S', 'TAG': '_', 'TGG': 'W',
+        'TTA': 'L', 'TCA': 'S', 'TAA': '', 'TGA': '',
+        'TTG': 'L', 'TCG': 'S', 'TAG': '', 'TGG': 'W',
 
         'CTT': 'L', 'CCT': 'P', 'CAT': 'H', 'CGT': 'R',
         'CTC': 'L', 'CCC': 'P', 'CAC': 'H', 'CGC': 'R',
